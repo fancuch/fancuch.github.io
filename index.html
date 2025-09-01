@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FANcuch - Better than yesterday</title>
+    <meta name="description" content="บันทึกเส้นทางการพัฒนาตัวเอง เริ่มจากสุขภาพ และขยายไปสู่ Mindset และการเดินทางของชีวิต">
+    <meta name="keywords" content="self-improvement, สุขภาพ, mindset, การพัฒนาตัวเอง, แฟนคัช, fancuch">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="FANcuch - ดีกว่าเมื่อวาน">
+    <meta property="og:description" content="บันทึกเส้นทางการพัฒนาตัวเอง เริ่มจากสุขภาพ และขยายไปสู่ Mindset และการเดินทางของชีวิต">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="/og-image.png">
+    <meta property="og:url" content="https://fancuch.com">
+    
+    <!-- Twitter Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="FANcuch - Better than yesterday">
+    <meta name="twitter:description" content="บันทึกเส้นทางการพัฒนาตัวเอง">
+    <meta name="twitter:image" content="/og-image.png">
+    
+    <style>
+        /* CSS Reset & Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #fff;
+            background-color: #0a0a0a;
+            overflow-x: hidden;
+        }
+        
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-decoration: none;
+            color: #fff;
+            letter-spacing: -0.5px;
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        .nav-link {
+            text-decoration: none;
+            color: #fff;
+            font-weight: 400;
+            transition: opacity 0.3s ease;
+        }
+        
+        .nav-link:hover {
+            opacity: 0.7;
+        }
+        
+        /* Mobile Menu Toggle */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+        }
+        
+        .hero-logo {
+            width: 120px;
+            height: 120px;
+            background: #fff;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 2rem;
+            animation: fadeInUp 0.8s ease;
+        }
+        
+        .hero-logo span {
+            color: #000;
+            font-size: 3rem;
+            font-weight: 700;
+            font-family: Georgia, serif;
+        }
+        
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            letter-spacing: -2px;
+            animation: fadeInUp 0.8s ease 0.2s both;
+        }
+        
+        .hero p {
+            font-size: clamp(1.1rem, 2vw, 1.3rem);
+            margin-bottom: 3rem;
+            opacity: 0.8;
+            max-width: 600px;
+            animation: fadeInUp 0.8s ease 0.4s both;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: #fff;
+            color: #000;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            animation: fadeInUp 0.8s ease 0.6s both;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.2);
+        }
+        
+        /* About Section */
+        .about {
+            padding: 6rem 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .about h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin-bottom: 2rem;
+            font-weight: 700;
+        }
+        
+        .about p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            opacity: 0.8;
+            margin-bottom: 1.5rem;
+        }
+        
+        /* Highlights Section */
+        .highlights {
+            padding: 6rem 2rem;
+            background: #111;
+        }
+        
+        .highlights-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .highlights h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin-bottom: 3rem;
+            font-weight: 700;
+        }
+        
+        .highlights-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .highlight-card {
+            background: #1a1a1a;
+            padding: 3rem 2rem;
+            border-radius: 20px;
+            text-decoration: none;
+            color: #fff;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .highlight-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        .highlight-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: #fff;
+            color: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 1.5rem;
+        }
+        
+        .highlight-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+        
+        .highlight-card p {
+            opacity: 0.7;
+            line-height: 1.6;
+        }
+        
+        /* Social Section */
+        .social {
+            padding: 6rem 2rem;
+            text-align: center;
+        }
+        
+        .social h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin-bottom: 3rem;
+            font-weight: 700;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+        
+        .social-link {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: #fff;
+            color: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
+        }
+        
+        .social-link:hover {
+            transform: scale(1.1);
+            background: #ddd;
+        }
+        
+        .hashtags {
+            margin-top: 2rem;
+            opacity: 0.6;
+            font-size: 0.9rem;
+        }
+        
+        /* Footer */
+        .footer {
+            background: #000;
+            color: #fff;
+            text-align: center;
+            padding: 2rem;
+        }
+        
+        .footer p {
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .nav-menu {
+                position: fixed;
+                left: -100%;
+                top: 70px;
+                flex-direction: column;
+                background: rgba(10, 10, 10, 0.95);
+                backdrop-filter: blur(10px);
+                width: 100%;
+                text-align: center;
+                transition: 0.3s;
+                padding: 2rem 0;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            }
+            
+            .nav-menu.active {
+                left: 0;
+            }
+            
+            .menu-toggle {
+                display: block;
+            }
+            
+            .nav-container {
+                padding: 0 1rem;
+            }
+            
+            .hero {
+                padding: 1rem;
+            }
+            
+            .hero-logo {
+                width: 100px;
+                height: 100px;
+            }
+            
+            .hero-logo span {
+                font-size: 2.5rem;
+            }
+            
+            .about,
+            .highlights,
+            .social {
+                padding: 4rem 1rem;
+            }
+            
+            .highlights-grid {
+                gap: 1.5rem;
+            }
+            
+            .highlight-card {
+                padding: 2rem 1.5rem;
+            }
+            
+            .social-links {
+                gap: 1rem;
+            }
+            
+            .social-link {
+                width: 50px;
+                height: 50px;
+                font-size: 1rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .highlights-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">FANcuch</a>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#highlights" class="nav-link">Highlights</a></li>
+                <li><a href="#social" class="nav-link">Social</a></li>
+            </ul>
+            <button class="menu-toggle" id="menu-toggle">☰</button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-logo">
+            <span>ฟ</span>
+        </div>
+        <h1>FANcuch</h1>
+        <p>ดีกว่าเมื่อวาน | Better than yesterday<br>
+        บันทึกเส้นทางการพัฒนาตัวเอง เพื่อชีวิตที่ดีขึ้นทุกวัน</p>
+        <a href="#social" class="cta-button">Follow Journey</a>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <h2>About FANcuch</h2>
+        <p>สวัสดีครับ ผมชื่อแฟน ผู้ก่อตั้ง FANcuch (แฟนคัช)</p>
+        <p>FANcuch คือโปรเจกต์ที่บันทึกเส้นทางการพัฒนาตัวเองทีละก้าว ในแบบที่เรียบง่าย แต่ยั่งยืน</p>
+        <p>เริ่มต้นจากการดูแลสุขภาพ แล้วค่อยๆ ขยายไปสู่การพัฒนา Mindset และการเดินทางของชีวิต</p>
+        <p>เพราะผมเชื่อว่า… การเปลี่ยนแปลงเล็กๆ ทุกวัน จะค่อยๆ สร้าง ผลลัพธ์ที่ยิ่งใหญ่ในระยะยาว</p>
+    </section>
+
+    <!-- Highlights Section -->
+    <section class="highlights" id="highlights">
+        <div class="highlights-container">
+            <h2>What We Focus On</h2>
+            <div class="highlights-grid">
+                <a href="#" class="highlight-card">
+                    <div class="highlight-icon">💧</div>
+                    <h3>Health</h3>
+                    <p>Water, nutrition & movement<br>Building strong foundations for the body</p>
+                </a>
+                
+                <a href="#" class="highlight-card">
+                    <div class="highlight-icon">🧠</div>
+                    <h3>Mind</h3>
+                    <p>Rest, focus & motivation<br>Strengthening mental resilience</p>
+                </a>
+                
+                <a href="#" class="highlight-card">
+                    <div class="highlight-icon">🎯</div>
+                    <h3>Journey</h3>
+                    <p>Progress tracking & life path<br>Growing together through experiences</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Section -->
+    <section class="social" id="social">
+        <h2>Follow Our Journey</h2>
+        <div class="social-links">
+            <a href="https://tiktok.com/@fancuch" class="social-link" title="TikTok" target="_blank">📱</a>
+            <a href="https://youtube.com/@fancuch" class="social-link" title="YouTube" target="_blank">📺</a>
+            <a href="https://www.instagram.com/fancuch" class="social-link" title="Instagram" target="_blank">📷</a>
+            <a href="https://www.facebook.com/fancuch" class="social-link" title="Facebook" target="_blank">👥</a>
+            <a href="https://x.com/fancuch" class="social-link" title="X (Twitter)" target="_blank">🐦</a>
+        </div>
+        <div class="hashtags">
+            #แฟนคัช #fancuch #ดีกว่าเมื่อวาน
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2025 FANcuch. All rights reserved.<br>
+        Making progress, one day at a time.</p>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const menuToggle = document.getElementById('menu-toggle');
+        const navMenu = document.getElementById('nav-menu');
+        
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+        
+        // Close mobile menu when clicking on a link
+        const navLinks = document.querySelectorAll('.nav-link');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+            });
+        });
+        
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+        
+        // Add scroll effect to navbar
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 100) {
+                navbar.style.background = 'rgba(10, 10, 10, 0.98)';
+            } else {
+                navbar.style.background = 'rgba(10, 10, 10, 0.95)';
+            }
+        });
+    </script>
+</body>
+</html>
